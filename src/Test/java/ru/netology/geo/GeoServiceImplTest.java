@@ -21,15 +21,22 @@ class GeoServiceImplTest {
         Location expected = new Location("Moscow", Country.RUSSIA, null, 0);
         Location result = geoService.byIp("172. ");
 
-        Assertions.assertEquals(expected.equals(result),result.equals(expected));
+        Assertions.assertEquals(expected.getCountry(), result.getCountry());
+        Assertions.assertEquals(expected.getCity(), result.getCity());
+        Assertions.assertEquals(expected.getStreet(), result.getStreet());
+        Assertions.assertEquals(expected.getBuiling(), result.getBuiling());
     }
 
+    //параметризованный вариант того же теста
     @ParameterizedTest
     @MethodSource("factory")
     void byIpParam(String ip, Location expected) {
         GeoServiceImpl geoService = new GeoServiceImpl();
         Location result = geoService.byIp(ip);
-        Assertions.assertEquals(expected.equals(result),result.equals(expected));
+        Assertions.assertEquals(expected.getCountry(), result.getCountry());
+        Assertions.assertEquals(expected.getCity(), result.getCity());
+        Assertions.assertEquals(expected.getStreet(), result.getStreet());
+        Assertions.assertEquals(expected.getBuiling(), result.getBuiling());
     }
 
     public static Stream<Arguments> factory() {
