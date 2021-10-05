@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MessageSenderImplTest {
-
+// сделала 2 теста в одном параметризованном 
     @ParameterizedTest
     @MethodSource("factory")
     void testSend(String key, String ip, String expected) {
